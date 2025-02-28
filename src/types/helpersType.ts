@@ -1,10 +1,10 @@
 import { type ProductItemType } from "./components/products";
 
 export type CalcDiscountArg = {
-    price: number;
-    discount: number;
+    price: number | undefined;
+    discount: number | undefined;
 };
 export type CalcCountPrice = {
-    basketDetails: ProductItemType;
-    basket: ProductItemType;
+    basketDetails: ProductItemType[];
+    basket: ProductItemType[];
 };

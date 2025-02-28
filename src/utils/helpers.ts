@@ -1,10 +1,12 @@
 import { CalcCountPrice, CalcDiscountArg } from "../types/helpersType";
 
 export function calcDiscount({ price, discount }: CalcDiscountArg) {
+    if (!price || !discount) return;
+
     return (price - price * (discount / 100)).toFixed(2);
 }
 
-export function calcCountPrice({ basketDetails, basket }:CalcCountPrice) {
+export function calcCountPrice({ basketDetails, basket }: CalcCountPrice) {
     if (!basketDetails || !basket)
         return { itemCount: 0, totalPrice: 0, totalQuantities: 0 };
 
@@ -12,13 +14,16 @@ export function calcCountPrice({ basketDetails, basket }:CalcCountPrice) {
         (acc, item) => {
             //*math the basket items to data
             const usersQuantities = basket?.find(
-                (q) => Number(q.productId) === item.id
+                (q) => Number(q?.id) === item?.id
             )?.quantity;
 
-            const quantity = usersQuantities || item.quantity || 1;
+            const quantity = usersQuantities || item?.quantity || 1;
 
             const discountedPrice = Number(
-                calcDiscount(item.price, item.discountPercentage)
+                calcDiscount({
+                    price: item?.price,
+                    discount: item?.discountPercentage,
+                })
             );
 
             acc.itemCount += quantity; // Total items count

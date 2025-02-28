@@ -4,19 +4,21 @@ export type ProductItemType = {
     description: string;
     category: string;
     price: number;
+    quantity: number;
     discountPercentage: number;
     rating: number;
     stock: number;
-    tags: string[];
+    tags: string[] | [];
     brand: string;
-    dimensions: Dimension[];
+    dimensions: Dimension;
     warrantyInformation: string;
     shippingInformation: string;
     availabilityStatus: string;
-    reviews: Review[];
+    reviews: Review[] | [];
     returnPolicy: string;
     minimumOrderQuantity: number;
-    images: string[];
+    images: string[] | [];
+    weight: string;
 } | null;
 export type ProductItemProps = {
     id: number;
