@@ -20,8 +20,9 @@ export async function getAllProducts() {
 
     // Wait for all requests to complete
     const results = await Promise.all(response);
-
-    return results;
+    const allProducts = results?.flatMap((item) => item.products);
+    console.log(allProducts);
+    return allProducts;
   } catch (error) {
     console.error(error);
     throw error;
