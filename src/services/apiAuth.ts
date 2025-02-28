@@ -1,4 +1,4 @@
-import { LoginType } from "../types/auth";
+import { IsAuth, LoginType } from "../types/auth";
 import supabase from "./supabase";
 
 //*signup
@@ -15,7 +15,7 @@ export async function signup({ email, password }: LoginType) {
 }
 
 //*login
-export async function login({ email, password }: LoginType) {
+export async function login({ email, password }: LoginType): Promise<IsAuth> {
     const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,

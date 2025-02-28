@@ -159,8 +159,8 @@ export default function Dashboard() {
                         divider
                         onClick={() => navigate("/shoppingBasket")}
                     >
-                        <ListItemText primary="Shopping Cart" />
-                        <IconButton aria-label="Shopping basket">
+                        <ListItemText primary="Cart" />
+                        <IconButton aria-label="Cart">
                             <ShoppingBasketRounded />
                         </IconButton>
                     </ListItem>
